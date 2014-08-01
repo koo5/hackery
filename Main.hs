@@ -17,13 +17,18 @@ rGPB = 10 -- take a fuckin guess
 rGPC =  100 -- original
 rSPR = 1000 -- stack pointer
 
+opNop = 0
+opAnd = 1
+opSub = 2
+opCal = 3
+opPsh = 4
 
 type MemLoc        = Int
-data Literal       = IntLit Int | CharLit Char deriving (Eq)
+data Literal       = IntLit Int | CharLit Char | StrLit String deriving (Eq)
 		--back in a bit k
 data Operand       = Loc MemLoc | Lit Literal deriving (Eq)-- An operand (or argument) of an assembly instruction 
-type Opcode        = Int -- The opcode of an instruction
-data InstrType     = Instr Opcode Operand Operand | Nop deriving (Eq) --ahh this is fine, just need it over there too
+type Opcode        = Int
+data InstrType     = Instr1 Opcode Operand | Instr Opcode Operand Operand | Nop deriving (Eq) --ahh this is fine, just need it over there too
 --data RegisterDef   = Register {name :: String, value :: [Int], id} --TODO?
 type RegisterType  = Int -- wont memory be all of one type anyway? -- RegisterType; don't change
 type Registers     = [RegisterType] -- Register contents
@@ -49,11 +54,12 @@ evalInstructions :: [InstrType] -> VmType -> VmType
 
 evalInstructions [] vm = vm
 
-evalInstructions (i:[]) vm =
-	runBinary i vm
-
-evalInstructions (i:ix) vm =
-	evalInstructions ix $ runBinary i vm
+evalInstructions instrs vm =
+	let ip = instrPointer vm in
+		if length instrs > ip then
+			evalInstructions instrs $ runBinary (instrs !! ip) vm
+		else
+			vm
 
 updated list pos val =
 	take pos list ++ [val] ++ drop (pos + 1) list
@@ -70,7 +76,13 @@ locval (Loc ( val)) = val
 
 intval (Lit (IntLit val)) = val
 subs = []
-makeSub name endLoc = subs ++ (name, endLoc)
+--mindfart
+matchSubByName (Instr opcode o1 o2) name =
+	opcode == opSub && o1 == name
+matchSubByName _ _ = False
+
+findSub name instrs =
+	find (\x -> matchSubByName x name) instrs
 
 regFromInt :: Int -> RegisterType
 regFromInt x = x
@@ -85,13 +97,17 @@ parseStrToInstruction :: String -> InstrType
 parseStrToInstruction s = do
 	let x = words s
 	    i = x !! 0
-	    o1raw = x !! 1
-	    o2raw = x !! 2
-	    o1 = read o1raw :: Int in --clever huh?
+	    o1str = x !! 1
+	    o2str = x !! 2
+	    o1 = read o1str :: Int in --clever huh?
 		case i of
-			"add" -> Instr 1 (Lit(IntLit o1)) (Lit(IntLit 3))
+			"" -> Nop
+			"---" -> Nop
 			"nop" -> Nop
-			"g"
+			"add" -> Instr opAnd (Lit(IntLit o1)) (Lit(IntLit 3))
+			"psh" -> Instr1 opPsh (Lit(StrLit o1str)) --im gonna go lay down.--okay
+			"cal" -> Instr1 opCal (Lit(StrLit o1str)) --we need to make a stack...--cal <thing> : executes a 'system call'
+			"sub" -> Instr1 opSub (Lit(StrLit o1str)) -- starts a subroutine
 	--i = x
 	--y = x !! 0:x !! 1:x !! 2 --without a simple slicing notation, this is the best i got. 3.
 	--z = Instr y !! 0 y !! 1 y !! 2
@@ -118,11 +134,13 @@ test2 = do
 
 
 --The archaic way
-test4 = evalAsm "sub \"mysub\"\
+test4 = 
+	evalAsm "\
+	\sub \"mysub\"\
 	\psh \"Hey\"\
 	\cal \"print\"\
 	\end\
-	\jmp \"mylabel\"" newVm
+	\--- jmp \"mylabel\"" newVm
 
 --There. crude.
 
