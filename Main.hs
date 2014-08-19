@@ -9,14 +9,30 @@ import Data.Char
 import Data.Int
 import Debug.Hood.Observe
 import Safe
+import Data.Bits --? --what? when? how? shift left/right; >> and << don't mean what they do in other langs--ahh
+
 --We'll worry about modules when it's done
 --data InstrDetails  = InstrDetails {instrName :: String, opcode :: Int} --That should be sufficient
 
 rACC = 0--well, this could work...  What other registers besides ACC and a general purpose one will we need?dunno, your expertise:)
 rGPA = 1 -- General purpose register 'a'
-rGPB = 10 -- take a fuckin guess
-rGPC =  100 -- original
-rSPR = 1000 -- stack pointer
+rGPB = 2 -- take a fuckin guess
+rGPC = 3 -- original
+rSPR = 4 -- stack pointer
+rFNE = 5 --6why not just fNE? because reasons
+rFEQ = 6
+rFLT = 7
+rFGT = 8
+rFCK = 9--i lol'd --9/10 would lol again
+rRES = 10 --result of last operation; this means rFCK is deprecated, althought someone has yet to submit a patch--
+--an error register will prolly still be useful, even with ints.anyway..
+--I came up with a way to set your own flags:
+--the `tog' instruction: it toggles a global boolean; starts out false
+--i was thinking about a register for error messages yesterday when we were having trouble with debugging, 
+--but then the memory is just ints
+--any others you can think of?rFCK, but i cant figure out a good use
+--maybe rFCK is set when you divide by zero
+--all the flags are 2 letters and the flag regnames start with f
 
 showRegs regs =
 	"ACC: " ++ show (regs !! rACC)
@@ -29,8 +45,14 @@ type Opcode        = Int
 --do we just define all the instructions here ? that seems a bit weird though...
 --it would be a standard way for a higher level interpreter --why not
  --why not define them all here? thats what i just said --i'm agreeing with you--ah..well it would look like this..
-type Op            = Operand 
-data InstrType     = Nop | Add Op Op | Min Op Op | Cal | Psh Op | Sub String | End deriving (Eq, Show)
+type Op            = Operand  --what are you doing in mc?extracting some something for the forms thing --i'm more noob than you; i can't use mcedit.yea thats a whole new nooblevel
+--that was probably the weirdest thing that happened today--im so sleepy man--
+--soon i'm gonna go to best buy and gaze longingly at the awesome expensive mechanical keyboards--they have mechanical keyboards at bestbuy?
+--they do here
+--they have one that's out in the open that you can clack on
+--and another more clacky brand thats not out, but you can press the arrow keys through the box--haha ok. im off. have fun okay bye
+
+data InstrType     = Nop | Add Op Op | Min Op Op | Cal | Psh Op | Sub String | End | Mul Op Op | Shl Op Op | Shr Op Op | Cmp Op Op | Tog | deriving (Eq, Show)
 --sub "name" ?well a string then i suppose
 --mov dest, src
 --data RegisterDef   = Register {name :: String, value :: [Int], id} --TODO?
@@ -91,23 +113,49 @@ findSub name instrs =
 	elemIndex (Sub name) instrs
 
 regFromInt :: Int -> RegisterType
+
 regFromInt x = x
 
+{-
+'System call' numbers:
+1: Prints top of stack
+2: Reads in a line, and places into GPA
+3: Reads in a single char, and places into GPA
+4: Opens a file: Top of stack is popped 2 times; 1st being the filename, 2nd being the mode (r, w, a)
+5: Exit, top of stack is the exit code
+-}
 
 runBinary :: InstrType -> VmType -> VmType
-
-runBinary i (Vm ip regs) = case i of
-	Nop  -> Vm (ip + 1) regs
-	Add a b -> Vm (ip + 1) (updated regs rACC (regFromInt ((intval a)+(intval b))))
-	
-	
-	
+--What are you committing to? a repo..
+runBinary i (Vm ip regs) = let
+		next = ip + 1 
+	in case i of
+		Nop     -> Vm (ip + 1) regs
+		Add a b -> Vm (ip + 1) (updated regs rACC (regFromInt ((intval a)+(intval b))))
+		Min a b -> Vm (ip + 1) (updated regs rACC (regFromInt ((intval a)-(intval b))))
+		Cal     -> Vm next (updated regs 666 666) --srsly do we have to call
+		--functions by some obscure number when it can be a nice string and even
+		--have separate system and user functions? what is this, 1920's?
+		--it's how x86 asm is...and?   
+		Psh x   -> Vm next (updated regs 667 666)
+		Sub _   -> Vm next regs
+		End     -> Vm next regs
+		Shr a b -> Vm next (updated regs rACC (regFromInt ((intval a)`shiftR`(intval b))))
+		Shl a b -> Vm next (updated regs rACC (regFromInt ((intval a)`shiftL`(intval b)))) --those should work...--try it out...
+		Cmp a b -> Vm next (updated flags r --maybe call a function that returns a list of flags?
+		--personally id just be lazy and use the main mem. rCMP or something
+		--Things can set multiple flags you know: cmp 5, 4 makes the LT and NE flags 'true'--so? use multiple flags.
+		--multiple flag registers? 'cause that's not a bad idea.orly?rly.kay
+--Could you tell me some of mcedits shortcuts?
+--look down
+--i don't know why i'm surprised that didnt work...--what didint work? pressing 1 for help f1 ooooooooooooooooohhhhhh
+-- Min Op Op | Cal | Psh Op | Sub String | End deriving (Eq, Show)
 
 parseStrToInstruction :: String -> InstrType
 
 parseStrToInstruction s = do
 	let x = words s
-	    i = x !! 0
+	    i = observe "i" (x !! 0)
 	    o1str = x !! 1
 	    o2str = x !! 2
 	    o1 = readNote (show x) o1str :: Int
@@ -154,10 +202,10 @@ parseStrToInstruction s = do
 --The archaic way
 test4 = 
 	evalAsmLines ["add 3 5",
-	"--- sub \"mysub\"",
-	"--- psh \"Hey\"",
-	"--- cal \"print\"",
-	"--- end",
+	"sub \"mysub\"",
+	"psh \"Hey\"",
+	"cal \"print\"",
+	"end",
 	"--- jmp \"mylabel\""] newVm
 --shoulnt the \'s be at the end of lines?
 --There. crude.
