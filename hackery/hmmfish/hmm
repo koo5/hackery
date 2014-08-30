@@ -1,0 +1,21 @@
+#!/usr/bin/env fish
+
+set hmmdir (dirname (status --current-filename))
+set snippetsdir "$hmmdir/snippets"
+
+if test (count $argv) -gt 0
+	set snip "$snippetsdir/$argv[1]"
+	if test -e $snip
+		. $snip
+	else
+		echo "wats $snip?"
+	end
+
+else
+	echo "updating autocompletions with $snippetsdir"
+	for i in (ls $snippetsdir);
+		echo $i;
+		complete -xc hmm -a $i --description (cat "$snippetsdir/$i");
+	end
+end
+
