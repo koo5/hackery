@@ -17,6 +17,8 @@ def name_search(s):
 		 r.append((i, j['full_name'])) #better save the git address here
 	return r
 
+#all that needs to happen is for the top result to be selected automagically
+
 def num_search(num):
 	f = open("last_search", "r")
 	g = json.load(f)
@@ -37,6 +39,11 @@ else:
 	lookie = sys.argv[1]
 
 	if lookie.isdigit():
+	
+		#this doesnt really need to exist huh #i just think its a neat attempt at a different kind of interaction, but whatever we can keep it
+
+#that should be nag vcs for git working pretty well
+#-p was a suggestion. ok, go ahead and strip it down, no printing of results..just save it as another version pls ok	
 		name = num_search(lookie)
 		if name == None:
 			print "wat"
@@ -47,9 +54,16 @@ else:
 	
 	else:
 		res = name_search(lookie)
-		for i in res:
-			print i
-
+		#for i in res:
+		#	print i
+		if not res:
+			print "I can pretty safely say that there were no results."
+#			wtf. the file thing?no idea
+		try:
+			print "Cloning " + res[0][1] + "..."
+			os.system("git clone https://github.com/"+res[0][1]+".git")
+		except:
+			print "An error occured"
 		#save it for later
 		o = open("last_search", "w")
 		json.dump(res, o, indent = 4)
