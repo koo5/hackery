@@ -1,12 +1,11 @@
 #!/usr/bin/env python
 import os, sys
 
-#print sys.argv[1]
-
+cmd = "ls " + sys.argv[1]  + " -Q"
 #todo:what if user used -Q, or one of the other quoting formats? can we deal with that? im sure we can!
-cmd = "ls -l -a -R" + " -Q"
+#cmd = "ls  -a -R" + " -Q"
 diredcmd = cmd + " -l --dired"
-
+print cmd
 
 rawdired = os.popen(diredcmd).read()
 rawls = os.popen(cmd).read()
@@ -29,12 +28,12 @@ nums = diredline.split()[1:]
 assert len(nums)%2 == 0
 
 from itertools import islice, izip
-pairs = zip(nums[::2], nums[1::2], ['dunno'*(len(nums)/2)])
+pairs = zip(nums[::2], nums[1::2], ['dunno']*(len(nums)/2))
 
 if subdired != None:
 	subnums = subdired.split()[1:]
 #	print subnums
-	subpairs = zip(subnums[::2], subnums[1::2], ['subdir'*(len(subnums)/2)])
+	subpairs = zip(subnums[::2], subnums[1::2], ['subdir']*(len(subnums)/2))
 	pairs += subpairs
 #print pairs
 
@@ -48,10 +47,16 @@ dirs = []
 
 #print len(list(pairs))
 
+print  "orig------------------------------------------"
+print rawls
+print  "orig------------------------------------------"
+
+
 for pair in pairs:
 	start,end,kind = pair
 	f = rawdired[start:end]
-	line = rawdired[:start].rsplit("\n",1)
+	line = rawdired[:start].rsplit("\n",1)[-1]
+	#print pair
 	if kind == 'subdir':
 		kind = 'dir'
 	else:
@@ -60,21 +65,18 @@ for pair in pairs:
 		elif line.startswith("  -"):
 			kind = 'file'
 		else:
-			raise 666
+			raise Exception("line is "+repr(line), pair)
 	#if we want to handle files with newlines in names, we might try playing with the escaping parameters or be careful about quotes?
 	#entries in the subdired list are always dirs
-	print ">>>",f
+	#print ">>>",f
 	files.append((f, kind))
 
-print  "orig------------------------------------------"
-print rawls
-print  "orig------------------------------------------"
 output = ""
 start = 0
 for f,kind in files:
 	pos = rawls.find(f)
 	#print pos
-	marked =  "<<file>>"+f+"<</file>>"
+	marked =  "<<"+kind+">>"+f+"<</"+kind+">>"
 	output += rawls[start:pos] + marked
 	tocut = pos+len(f)
 	#start = pos + len(f)
