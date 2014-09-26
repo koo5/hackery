@@ -29,16 +29,16 @@ nums = diredline.split()[1:]
 assert len(nums)%2 == 0
 
 from itertools import islice, izip
-pairs = list(izip(nums[::2], nums[1::2]))
+pairs = zip(nums[::2], nums[1::2], ['dunno'*(len(nums)/2)])
 
 if subdired != None:
 	subnums = subdired.split()[1:]
 #	print subnums
-	subpairs = list(izip(subnums[::2], subnums[1::2]))
+	subpairs = zip(subnums[::2], subnums[1::2], ['subdir'*(len(subnums)/2)])
 	pairs += subpairs
 #print pairs
 
-pairs = [(int(p[0]), int(p[1])) for p in pairs]
+pairs = [(int(p[0]), int(p[1]), p[2]) for p in pairs]
 pairs = sorted(pairs, key=lambda x: x[0])
 
 #print "pairs:",pairs
@@ -49,20 +49,29 @@ dirs = []
 #print len(list(pairs))
 
 for pair in pairs:
-	s,e = pair
-	f = rawdired[s:e]
-	#todo: look from here backwards for "\n  d" or "\n  -", to tell dirs and files apart. 
-	#if we want to handle files with newlines in names, we might try playing with the escaping parameters or be careful about quotes.
+	start,end,kind = pair
+	f = rawdired[start:end]
+	line = rawdired[:start].rsplit("\n",1)
+	if kind == 'subdir':
+		kind = 'dir'
+	else:
+		if line.startswith("  d"):
+			kind = 'dir'
+		elif line.startswith("  -"):
+			kind = 'file'
+		else:
+			raise 666
+	#if we want to handle files with newlines in names, we might try playing with the escaping parameters or be careful about quotes?
 	#entries in the subdired list are always dirs
 	print ">>>",f
-	files.append(f)
+	files.append((f, kind))
 
 print  "orig------------------------------------------"
 print rawls
 print  "orig------------------------------------------"
 output = ""
 start = 0
-for f in files:
+for f,kind in files:
 	pos = rawls.find(f)
 	#print pos
 	marked =  "<<file>>"+f+"<</file>>"
