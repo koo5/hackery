@@ -4,17 +4,18 @@
 #python 2 btw
 
 import json #like a baws
-import urllib2
+import urllib2, urllib
 import sys, os
 
 
 def name_search(s):
 	##TODO
-	f = urllib2.urlopen("https://api.github.com/search/repositories?q=" + s).read()
+	f = urllib2.urlopen("https://api.github.com/search/repositories?q=" + urllib.quote_plus(s)).read()
+	open("debug_result", "w").write(f)
 	x = json.loads(f) #at least you didnt see my fuck ups except for that one
 	r = []
 	for i,j in enumerate(x['items']):
-		 r.append((i, j['full_name'])) #better save the git address here
+		 r.append((i, j['full_name'])) #better save the clone command here, along with the name
 	return r
 
 #all that needs to happen is for the top result to be selected automagically
@@ -39,11 +40,6 @@ else:
 	lookie = sys.argv[1]
 
 	if lookie.isdigit():
-	
-		#this doesnt really need to exist huh #i just think its a neat attempt at a different kind of interaction, but whatever we can keep it
-
-#that should be nag vcs for git working pretty well
-#-p was a suggestion. ok, go ahead and strip it down, no printing of results..just save it as another version pls ok	
 		name = num_search(lookie)
 		if name == None:
 			print "wat"
@@ -59,11 +55,12 @@ else:
 		if not res:
 			print "I can pretty safely say that there were no results."
 #			wtf. the file thing?no idea
-		try:
-			print "Cloning " + res[0][1] + "..."
-			os.system("git clone https://github.com/"+res[0][1]+".git")
-		except:
-			print "An error occured"
+		else:
+			try:
+				print "Cloning " + res[0][1] + "..."
+				os.system("git clone https://github.com/"+res[0][1]+".git")
+			except Exception as e:
+				print "An error occured:", e
 		#save it for later
 		o = open("last_search", "w")
 		json.dump(res, o, indent = 4)
