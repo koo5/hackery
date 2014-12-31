@@ -7,7 +7,7 @@ from subprocess import check_output
 
 
 if len(argv) == 1:
-	command = 'git diff --color=always'
+	command = 'git diff --color=always;  grep "#crap"  -r src; head todo; grep "#todo"  -r src;'
 else:
 	command = argv[1]
 
