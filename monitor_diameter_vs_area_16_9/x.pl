@@ -1,12 +1,14 @@
 :- [library(clpr)].
-solve(D,R) :- {
+
+solve(D,R, X, Y) :- {
 	pow(D, 2)=(pow(X,2)+pow(X,2)),
 	R=Y*X,
 	X/Y=16/9,
 	X>0}.
 
-graph([D,R]) :-
-	between(0, 10, D),
-	solve(D,R).
+vals(D, Dcm, R, X, Y) :-
+	solve(D,R, X, Y),
+	Dcm is D * 2.54,
+	format('D:~2f~t~10+ Dcm: ~2f~t~15+ area: ~2f~t~15+ W: ~2f~t~15+ H: ~2f~n', [D, Dcm, R, X, Y]).
 
-%solve(R, 30).
+:- forall(between(1, 100, D), vals(D,_,_,_,_)).
