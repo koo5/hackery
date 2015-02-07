@@ -1,0 +1,55 @@
+<application>
+  <component name="StatisticsApplicationUsages">
+    <group name="vcs">
+      <project id="new_shit" values="Git" />
+      <project id="just_shit" values="Git" />
+    </group>
+    <group name="run-configuration-type-temp">
+      <project id="new_shit" values="PythonConfigurationType,tests.Unittests" />
+      <project id="just_shit" values="PythonConfigurationType" />
+    </group>
+    <group name="run-configuration-type">
+      <project id="new_shit" values="PythonConfigurationType,tests.Unittests" />
+    </group>
+    <group name="py-interpreter">
+      <project id="new_shit" values="Python 2.7.5+" />
+      <project id="just_shit" values="Python 3.4.0" />
+      <project id="stuff" values="Python 3.3.2+" />
+    </group>
+    <group name="file-type">
+      <project id="new_shit" values="HTML,XML,Images,Bash,ReST,PLAIN_TEXT,C++,Markdown,UNKNOWN,Python" />
+      <project id="just_shit" values="XML,Python,PLAIN_TEXT,Images,C++,JSON,UNKNOWN,Perl,HTML" />
+      <project id="stuff" values="UNKNOWN,XML,Python" />
+    </group>
+    <group name="module type">
+      <project id="new_shit" values="PYTHON_MODULE" />
+      <project id="just_shit" values="PYTHON_MODULE" />
+      <project id="stuff" values="PYTHON_MODULE" />
+    </group>
+  </component>
+  <component name="UsageTrigger">
+    <counts>
+      <entry feature="CreateFile.CreateFileAction" count="1" />
+      <entry feature="execute.PythonConfigurationType.Debug" count="131" />
+      <entry feature="execute.PythonConfigurationType.Run" count="3151" />
+      <entry feature="execute.tests.Run" count="15" />
+      <entry feature="ide.settings.Appearance" count="5" />
+      <entry feature="ide.settings.Code_Completion" count="1" />
+      <entry feature="ide.settings.Code_Folding" count="1" />
+      <entry feature="ide.settings.Colors_&amp;_Fonts" count="6" />
+      <entry feature="ide.settings.Editor" count="2" />
+      <entry feature="ide.settings.Editor_Tabs" count="2" />
+      <entry feature="ide.settings.Keymap" count="1" />
+      <entry feature="ide.settings.Language_Defaults" count="4" />
+      <entry feature="ide.settings.Plugins" count="1" />
+      <entry feature="ide.settings.Project_Interpreter" count="4" />
+      <entry feature="ide.settings.Project_Structure" count="1" />
+      <entry feature="ide.settings.Python" count="1" />
+      <entry feature="ide.settings.Python_Integrated_Tools" count="4" />
+      <entry feature="ide.settings.Smart_Keys" count="2" />
+      <entry feature="ide.settings.Version_Control" count="2" />
+      <entry feature="idea.caches.invalidated" count="1" />
+      <entry feature="ideaapp.started" count="81" />
+    </counts>
+  </component>
+</application>

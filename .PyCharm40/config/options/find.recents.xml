@@ -1,0 +1,36 @@
+<application>
+  <component name="FindRecents">
+    <findStrings>
+      <find>after_project</find>
+      <find>update_atts_on_server</find>
+      <find>delayed_cursor_move</find>
+      <find>after_cursor_moved</find>
+      <find>cursor</find>
+      <find>cols</find>
+      <find>scroll(s,l)</find>
+      <find>mouse</find>
+      <find>scroll_lines</find>
+      <find>maybe_draw</find>
+      <find>save</find>
+      <find>updated</find>
+      <find>CHANGED</find>
+      <find>dele</find>
+      <find>scroll</find>
+      <find>reload</find>
+      <find>MemberTag</find>
+      <find>tra</find>
+      <find>rect</find>
+      <find>menu_item_selected</find>
+      <find>add</find>
+      <find>atts</find>
+      <find>current_parser_node</find>
+      <find>b_lemon_load_file</find>
+      <find>log</find>
+      <find>pare</find>
+      <find>bad it</find>
+      <find>anything</find>
+      <find>bash</find>
+      <find>text_arg</find>
+    </findStrings>
+  </component>
+</application>

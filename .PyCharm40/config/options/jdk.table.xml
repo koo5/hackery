@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application>
+  <component name="ProjectJdkTable">
+    <jdk version="2">
+      <name value="Python 3.3.2+ (/usr/bin/python3m)" />
+      <type value="Python SDK" />
+      <version value="Python 3.3.2+" />
+      <homePath value="/usr/bin/python3m" />
+      <roots>
+        <classPath>
+          <root type="composite">
+            <root type="simple" url="file:///usr/lib/python3.3" />
+            <root type="simple" url="file:///usr/lib/python3.3/plat-i386-linux-gnu" />
+            <root type="simple" url="file:///usr/lib/python3.3/lib-dynload" />
+            <root type="simple" url="file:///usr/local/lib/python3.3/dist-packages" />
+            <root type="simple" url="file:///usr/lib/python3/dist-packages" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/python-skeletons" />
+            <root type="simple" url="file://$USER_HOME$/.PyCharm30/system/python_stubs/375384904" />
+          </root>
+        </classPath>
+        <sourcePath>
+          <root type="composite" />
+        </sourcePath>
+      </roots>
+      <additional />
+    </jdk>
+    <jdk version="2">
+      <name value="Python 2.7.5+ (/usr/bin/python2.7)" />
+      <type value="Python SDK" />
+      <version value="Python 2.7.5+" />
+      <homePath value="/usr/bin/python2.7" />
+      <roots>
+        <classPath>
+          <root type="composite">
+            <root type="simple" url="file:///usr/lib/python2.7" />
+            <root type="simple" url="file:///usr/lib/python2.7/plat-i386-linux-gnu" />
+            <root type="simple" url="file:///usr/lib/python2.7/lib-tk" />
+            <root type="simple" url="file:///usr/lib/python2.7/lib-dynload" />
+            <root type="simple" url="file://$USER_HOME$/.local/lib/python2.7/site-packages" />
+            <root type="simple" url="file:///usr/local/lib/python2.7/dist-packages" />
+            <root type="simple" url="file:///usr/lib/python2.7/dist-packages" />
+            <root type="simple" url="file:///usr/lib/python2.7/dist-packages/PILcompat" />
+            <root type="simple" url="file:///usr/lib/python2.7/dist-packages/gtk-2.0" />
+            <root type="simple" url="file:///usr/lib/pymodules/python2.7" />
+            <root type="simple" url="file:///usr/lib/python2.7/dist-packages/ubuntu-sso-client" />
+            <root type="simple" url="file:///usr/lib/python2.7/dist-packages/ubuntuone-client" />
+            <root type="simple" url="file:///usr/lib/python2.7/dist-packages/ubuntuone-control-panel" />
+            <root type="simple" url="file:///usr/lib/python2.7/dist-packages/ubuntuone-storage-protocol" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/python-skeletons" />
+            <root type="simple" url="file://$USER_HOME$/.PyCharm30/system/python_stubs/-1247972723" />
+            <root type="simple" url="file://$USER_HOME$/.local/lib/python2.7/site-packages/SuRF-1.1.4_r352-py2.7.egg" />
+            <root type="simple" url="file://$USER_HOME$/.local/lib/python2.7/site-packages/rdflib-4.1.2-py2.7.egg" />
+            <root type="simple" url="file://$USER_HOME$/.local/lib/python2.7/site-packages/html5lib-1.0b3-py2.7.egg" />
+            <root type="simple" url="file://$USER_HOME$/.local/lib/python2.7/site-packages/SPARQLWrapper-1.6.0-py2.7.egg" />
+            <root type="simple" url="file://$USER_HOME$/.local/lib/python2.7/site-packages/isodate-0.5.0-py2.7.egg" />
+            <root type="simple" url="file://$USER_HOME$/.local/lib/python2.7/site-packages/surf.sparql_protocol-1.0.0_r336-py2.7.egg" />
+            <root type="simple" url="file://$USER_HOME$/.local/lib/python2.7/site-packages/surf.rdflib-1.0.0_r338-py2.7.egg" />
+            <root type="simple" url="file://$USER_HOME$/.local/lib/python2.7/site-packages/rdfextras-0.4-py2.7.egg" />
+            <root type="simple" url="file:///usr/lib/python2.7/plat-x86_64-linux-gnu" />
+            <root type="simple" url="file:///usr/lib/python2.7/dist-packages/gst-0.10" />
+            <root type="simple" url="file:///usr/lib/python2.7/dist-packages/wx-2.8-gtk2-unicode" />
+            <root type="simple" url="file:///usr/local/lib/python2.7/dist-packages/virtualenv-1.11.6-py2.7.egg" />
+          </root>
+        </classPath>
+        <sourcePath>
+          <root type="composite" />
+        </sourcePath>
+      </roots>
+      <additional />
+    </jdk>
+    <jdk version="2">
+      <name value="Python 3.4.0 (/usr/bin/python3.4)" />
+      <type value="Python SDK" />
+      <version value="Python 3.4.0" />
+      <homePath value="/usr/bin/python3.4" />
+      <roots>
+        <classPath>
+          <root type="composite">
+            <root type="simple" url="file:///usr/local/lib/python3.4/dist-packages/virtualenv-1.11.6-py3.4.egg" />
+            <root type="simple" url="file:///usr/lib/python3.4" />
+            <root type="simple" url="file:///usr/lib/python3.4/plat-x86_64-linux-gnu" />
+            <root type="simple" url="file:///usr/lib/python3.4/lib-dynload" />
+            <root type="simple" url="file://$USER_HOME$/.local/lib/python3.4/site-packages" />
+            <root type="simple" url="file:///usr/local/lib/python3.4/dist-packages" />
+            <root type="simple" url="file:///usr/lib/python3/dist-packages" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/python-skeletons" />
+            <root type="simple" url="file://$USER_HOME$/.PyCharm30/system/python_stubs/-1247971765" />
+          </root>
+        </classPath>
+        <sourcePath>
+          <root type="composite" />
+        </sourcePath>
+      </roots>
+      <additional />
+    </jdk>
+    <jdk version="2">
+      <name value="PyPy 2.2.1 (/usr/lib/pypy/bin/pypy-c)" />
+      <type value="Python SDK" />
+      <version value="PyPy 2.2.1" />
+      <homePath value="/usr/lib/pypy/bin/pypy-c" />
+      <roots>
+        <classPath>
+          <root type="composite">
+            <root type="simple" url="jar:///usr/local/lib/pypy2.7/dist-packages/setuptools-1.1.5-py2.7.egg!/" />
+            <root type="simple" url="file:///usr/lib/pypy/lib_pypy" />
+            <root type="simple" url="file:///usr/lib/pypy/lib-python/2.7" />
+            <root type="simple" url="file:///usr/lib/pypy/lib-python/2.7/lib-tk" />
+            <root type="simple" url="file:///usr/lib/pypy/lib-python/2.7/plat-linux2" />
+            <root type="simple" url="file://$USER_HOME$/.local/lib/python2.7/site-packages" />
+            <root type="simple" url="file:///usr/local/lib/pypy2.7/dist-packages" />
+            <root type="simple" url="file:///usr/lib/pypy/dist-packages" />
+            <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/python-skeletons" />
+            <root type="simple" url="file://$USER_HOME$/.PyCharm30/system/python_stubs/1135325177" />
+          </root>
+        </classPath>
+        <sourcePath>
+          <root type="composite" />
+        </sourcePath>
+      </roots>
+      <additional />
+    </jdk>
+  </component>
+</application>
+

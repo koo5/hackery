@@ -1,0 +1,54 @@
+<application>
+  <component name="PropertiesComponent">
+    <property name="log.debug.categories" value="" />
+    <property name="DefaultHtmlDoctype.MigrateToHtml5" value="true" />
+    <property name="PyCharm.InitialConfiguration" value="true" />
+    <property name="PyCharm.InitialConfiguration.V2" value="true" />
+    <property name="PyCharm.InitialConfiguration.V3" value="true" />
+    <property name="PyCharm.InitialConfiguration.V4" value="true" />
+    <property name="PyCharm.InitialConfiguration.V5" value="true" />
+    <property name="PyCharm.initialConfigurationShown" value="true" />
+    <property name="installation.uid" value="f57bf9bb-a39e-479a-bac7-4f7d97fcd049" />
+    <property name="file.chooser.recent.files" value="$USER_HOME$/sec_shit/pizco_git/pizco/testsuite&#10;/home/kook/sec_shit/pizco_git/pizco&#10;/home/kook/sec_shit/tests&#10;/home/kook/sec_shit/stuff/the_doc.py&#10;/home/kook/sec_shit&#10;/home/kook/new_shit/stuff&#10;/home/kook/new_shit/new_shit.py&#10;/home/kook/new_shit" />
+    <property name="toolwindow.stripes.buttons.info.shown" value="true" />
+    <property name="file.colors.enable.non.project" value="Yellow" />
+    <property name="ExpandEnvironmentPanel" value="true" />
+    <property name="ExpandBeforeRunStepsPanel" value="true" />
+    <property name="RunConfigurable.dividerProportion" value="0.3" />
+    <property name="Non-Project Files" value="Yellow" />
+    <property name="FindSplitterProportion" value="0.25" />
+    <property name="ChangesViewManager.DETAILS_SPLITTER_PROPORTION" value="0.5" />
+    <property name="FileStructurePopup.narrowDown" value="true" />
+    <property name="OpenOrAttachDialog.OpenMode" value="replace" />
+    <property name="ColorChooser.RecentColors" value="249-255-205-255,,,247-255-160-255,,,83-83-83-255,,,70-70-70-255,,,61-61-61-255,,,67-128-60-255" />
+    <property name="PLUGIN_FILTER" value="timestamp&#10;uml&#10;context status&#10;scope&#10;jump" />
+    <property name="KEYMAP" value="fol&#10;error&#10;last&#10;live" />
+    <property name="SingleInspectionProfilePanel.VERTICAL_DIVIDER_PROPORTION" value="0.5" />
+    <property name="SingleInspectionProfilePanel.HORIZONTAL_DIVIDER_PROPORTION" value="0.5" />
+    <property name="DefaultHtmlDoctype.Refreshed" value="1" />
+    <property name="com.intellij.openapi.editor.actions.MultiplePasteAction$1.splitter" value="0.3" />
+    <property name="power.save.mode" value="false" />
+    <property name="LayoutCode.optimizeImports" value="false" />
+    <property name="LayoutCode.processChangedText" value="false" />
+    <property name="show.vcs.annotation.aspect.Revision" value="false" />
+    <property name="show.vcs.annotation.aspect.Author" value="false" />
+    <property name="show.vcs.annotation.aspect.Commit number" value="false" />
+    <property name="PACKAGE_FILTER" value="" />
+    <property name="null.splitter" value="0.3" />
+    <property name="sm_test_statistics_table_columnsWidth0" value="59" />
+    <property name="sm_test_statistics_table_columnsOrder0" value="0" />
+    <property name="sm_test_statistics_table_columnsWidth1" value="60" />
+    <property name="sm_test_statistics_table_columnsOrder1" value="1" />
+    <property name="sm_test_statistics_table_columnsWidth2" value="59" />
+    <property name="sm_test_statistics_table_columnsOrder2" value="2" />
+    <property name="PythonUnitTestRunner.Splitter.Proportion" value="0.2933537" />
+    <property name="PythonUnitTestRunnerSupport.trackRunningTest" value="false" />
+    <property name="PythonUnitTestRunnerSupport.selectFirtsDefect" value="false" />
+    <property name="PythonUnitTestRunnerSupport.scrollToStackTrace" value="true" />
+    <property name="PythonUnitTestRunnerSupport.showStatistics" value="true" />
+    <property name="PythonUnitTestRunnerSupport.scrollToSource" value="true" />
+    <property name="PythonUnitTestRunner.Splitter.Proportion_Statistics" value="0.79847497" />
+    <property name="PyCharm.NoScratch" value="true" />
+    <property name="bashsupport.weddingNotification.shown" value="1" />
+  </component>
+</application>
