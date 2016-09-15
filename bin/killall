@@ -1,1 +1,5 @@
-killall ntpd mission-control-5 goa-daemon goa-identity-service  postgres thunderbird cups-browsed  cron  ofonod  cupsd apache2
+#!/usr/bin/env bash
+
+rmmod iwldvm iwlwifi
+killall docker ntpd mission-control-5 goa-daemon goa-identity-service  postgres thunderbird cups-browsed  cron  ofonod  cupsd apache2
+powertop --auto-tune
