@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+route add -net 0.0.0.0 netmask 255.255.255.255 gw 10.0.0.138 metric 0 dev wlo1
+route add -host 10.0.0.101   metric 0 dev ppp0
