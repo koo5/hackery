@@ -5,8 +5,7 @@ tv(Diag,Area,W,H) :- {
 	W = H * 16 / 9,
 	Area = W * H,
 	W>0,
-	H>0,
-	Area > 0
+	H>0
 	}.
 
 print_tv(D, Area, W, H) :-
