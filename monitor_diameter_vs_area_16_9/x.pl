@@ -1,14 +1,20 @@
 :- [library(clpr)].
 
-solve(D,R, X, Y) :- {
-	pow(D, 2)=(pow(X,2)+pow(X,2)),
-	R=Y*X,
-	X/Y=16/9,
-	X>0}.
+tv(Diag,Area,W,H) :- {
+	pow(Diag, 2) = pow(W,2) + pow(H,2),
+	W = H * 16 / 9,
+	Area = W * H,
+	W>0,
+	H>0,
+	Area > 0
+	}.
 
-vals(D, Dcm, R, X, Y) :-
-	solve(D,R, X, Y),
-	Dcm is D * 2.54,
-	format('D:~2f~t~10+ Dcm: ~2f~t~15+ area: ~2f~t~15+ W: ~2f~t~15+ H: ~2f~n', [D, Dcm, R, X, Y]).
+print_tv(D, Area, W, H) :-
+	tv(D, Area, W, H),
+	Am is Area * 2.54 / 10000,
+	Wcm is W * 2.54,
+	Hcm is H * 2.54,
+	format('diag(inch):~0f~t~25+ area(m): ~5f~t~25+ W(cm): ~2f~t~25+ H(cm): ~2f~n', [D, Am, Wcm, Hcm]).
 
-:- forall(between(1, 100, D), vals(D,_,_,_,_)).
+
+:- forall(between(1, 200, D), print_tv(D,_,_,_)).
