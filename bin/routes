@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-echo "10.0.0.101 jessie.elektroline.cz" >> /etc/hosts
-
-route add -net 10.0.0.0 netmask 255.255.0.0  metric 0 dev ppp0
-route add -net 0.0.0.0 netmask 0.0.0.0 gw 192.168.0.1 metric 0 dev wlo1
-curl -s ipip.cz | grep -a "Moje IP"
-ping jessie.elektroline.cz
-
