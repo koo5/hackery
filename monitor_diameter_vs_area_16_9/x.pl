@@ -1,8 +1,13 @@
-:- [library(clpr)].
+:- [library(clpq)].
+:- ensure_loaded(library(aggregate)).
+:- ensure_loaded(library(between)).
 
 tv(Diag,Area,W,H) :- {
-	Diag * Diag = W * W + H * H,
-	W = H * 16 / 9, Area = W * H, H>0
+	/*H > 0, W > 0, Area > 0, W > H, Diag > W,*/
+	
+	Diag * Diag = W * W + H * H, W / H = 16 / 9,
+	
+	Area = W * H
 	}.
 
 print_tv(D, Area, W, H) :-
@@ -13,4 +18,4 @@ print_tv(D, Area, W, H) :-
 	format('diag(inch):~1f~t~20+ area(m): ~5f~t~20+ W(cm): ~1f~t~20+ H(cm): ~1f~n', [D, Am, Wcm, Hcm]).
 
 
-:- forall(between(1, 200, W), print_tv(D,_,W,_)).
+:- forall(between(2, 200, D), print_tv(D,_,_,_)).
